@@ -1,0 +1,12 @@
+.button {
+  border: none;
+  width: 46px;
+  height: 40px;
+  font-size: 22px;
+  background-color: var(--white);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  position: absolute;
+  right: 0px;
+  line-height: 1em;
+}
