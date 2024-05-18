@@ -1,8 +1,8 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { ISearchState, initialState, nameState } from "./types";
+import { ISearchState, initialState } from "./types";
 
 const searchSlice = createSlice({
-  name: nameState,
+  name: "search",
   initialState,
   reducers: {
     search(state, action: PayloadAction<ISearchState>) {

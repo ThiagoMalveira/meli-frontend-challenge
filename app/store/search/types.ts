@@ -9,6 +9,10 @@ export type ISearchState = {
   free_shipping: boolean;
 };
 
+export type IProduct = {
+  products: ISearchState | [];
+};
+
 type IPrice = {
   currency: string;
   amount: string;
@@ -31,25 +35,6 @@ export type ISearchParams = {
   price: string;
 };
 
-export const nameState = "search";
-
-export const initialState: ISearchState[] = {
-  id: "",
-  title: "",
-  price: {
-    currency: "",
-    amount: "",
-    decimals: 0,
-  },
-  installments: {
-    quantity: 0,
-    amount: "",
-  },
-  address: {
-    state_name: "",
-    city_name: "",
-  },
-  picture: "",
-  condition: "",
-  free_shipping: false,
+export const initialState: IProduct = {
+  products: [],
 };

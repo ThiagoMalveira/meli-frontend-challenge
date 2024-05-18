@@ -4,7 +4,7 @@ import convertPrice from "@/utils/convertPrice";
 import extractDecimals from "@/utils/extractDecimals";
 import { translateUrlParam } from "@/utils/translateUrlParams";
 import { URL } from "../pathUrl";
-import { Product } from "./types";
+import { ISorts, Product } from "./types";
 
 export const SearchService = {
   search: async (queryParams: ISearchParams) => {
@@ -25,30 +25,41 @@ export const SearchService = {
 
       const response = await request.json();
 
-      const search: ISearchState = response.results.map((item: Product) => {
-        return {
-          id: item.id,
-          title: item.title,
-          price: {
-            currency: item.currency_id,
-            amount: convertPrice(item.price, item.currency_id),
-            decimals: extractDecimals(item.price),
-          },
-          installments: {
-            quantity: item.installments?.quantity,
-            amount: item.installments?.amount,
-          },
-          address: {
-            state_name: "",
-            city_name: "",
-          },
-          picture: item.thumbnail,
-          condition: item.condition,
-          free_shipping: item.shipping.free_shipping,
-        };
-      });
+      const searchResults: ISearchState = response.results.map(
+        (item: Product) => {
+          return {
+            id: item.id,
+            title: item.title,
+            price: {
+              currency: item.currency_id,
+              amount: convertPrice(item.price, item.currency_id),
+              decimals: extractDecimals(item.price),
+            },
+            installments: {
+              quantity: item.installments?.quantity,
+              amount: item.installments?.amount,
+            },
+            address: {
+              state_name: "Não veio da API",
+              city_name: "Não veio da API",
+            },
+            picture: item.thumbnail,
+            condition: item.condition,
+            free_shipping: item.shipping.free_shipping,
+          };
+        }
+      );
 
-      return search;
+      const availableSorts: ISorts[] = response.available_sorts.map(
+        (sorts: ISorts) => {
+          return {
+            id: sorts.id,
+            name: sorts.name,
+          };
+        }
+      );
+
+      return { searchResults, availableSorts };
     } catch (err) {
       throw new Error(`Failed to fetch on search ${err}`);
     }

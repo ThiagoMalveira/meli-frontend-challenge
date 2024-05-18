@@ -1,8 +1,26 @@
-import styles from "@/styles/home.module.css";
+import { useAppDispatch, useAppSelector } from "@/hooks/useAppDispatch";
+import { searchProducts } from "@/store/search/actions";
+import { ISearchState } from "@/store/search/types";
+import { generateKey } from "@/utils/generateKey";
 import Head from "next/head";
+import { useCallback, useEffect } from "react";
 import Header from "./components/Header";
-
+import Product from "./components/Product";
+import styles from "./home.module.css";
 export default function Home() {
+  const dispatch = useAppDispatch();
+  const { products } = useAppSelector((state) => state.search);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const params = { searchTerm: "Solo leveling", sort: "", price: "" };
+
+  const getProducts = useCallback(() => {
+    dispatch(searchProducts(params));
+  }, [dispatch, params]);
+
+  useEffect(() => {
+    getProducts();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dispatch]);
   return (
     <>
       <Head>
@@ -18,7 +36,13 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <Header />
-        <div>Batata</div>
+        {products && (
+          <div className={styles.WrapperProducts}>
+            {products.map((product: ISearchState) => (
+              <Product key={generateKey()} item={product} />
+            ))}
+          </div>
+        )}
       </main>
     </>
   );
