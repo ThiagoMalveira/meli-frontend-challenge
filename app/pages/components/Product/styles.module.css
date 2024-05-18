@@ -1,4 +1,74 @@
 .wrapperProduct {
   display: flex;
   flex-direction: row;
+  padding: 16px;
+  width: 100%;
+  max-width: 1024px;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.imageProduct {
+  max-width: 100%;
+  height: auto;
+}
+
+.productInfo {
+  color: var(--text);
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+.wrapperPaymentInfo {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+@media (max-width: 350px) {
+  .wrapperPaymentInfo {
+    flex-direction: column;
+  }
+}
+
+.wrapperInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-left: 16px;
+  gap: 16px;
+  width: 50vw;
+}
+
+.installmentsInfoText {
+  color: var(--green);
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+.isFull {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #19da60;
+  width: 20px;
+  height: 20px;
+  padding: 4px;
+  border-radius: 50%;
+}
+
+.wrapperCity {
+  display: flex;
+  position: relative;
+  min-width: 110px;
+  justify-content: flex-end;
+}
+
+@media (max-width: 460px) {
+  .wrapperCity {
+    display: none;
+  }
+}
+
+.addressCityText {
+  color: var(--text);
 }

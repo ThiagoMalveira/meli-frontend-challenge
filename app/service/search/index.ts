@@ -40,8 +40,9 @@ export const SearchService = {
               amount: item.installments?.amount,
             },
             address: {
-              state_name: "Não veio da API",
-              city_name: "Não veio da API",
+              // Não veio da API
+              state_name: "Estado",
+              city_name: "Cidade",
             },
             picture: item.thumbnail,
             condition: item.condition,
