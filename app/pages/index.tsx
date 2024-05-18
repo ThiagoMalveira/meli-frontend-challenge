@@ -11,7 +11,7 @@ export default function Home() {
   const dispatch = useAppDispatch();
   const { products } = useAppSelector((state) => state.search);
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const params = { searchTerm: "Solo leveling", sort: "", price: "" };
+  const params = { searchTerm: "Apple iPod 5", sort: "", price: "" };
 
   const getProducts = useCallback(() => {
     dispatch(searchProducts(params));
@@ -36,7 +36,7 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <Header />
-        {products && (
+        {products.length && (
           <div className={styles.WrapperProducts}>
             {products.map((product: ISearchState) => (
               <Product key={generateKey()} item={product} />

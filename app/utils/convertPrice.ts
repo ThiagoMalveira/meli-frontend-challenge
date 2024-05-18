@@ -2,6 +2,7 @@ const convertPrice = (price: number, currency: string): string => {
   if (isNaN(price)) {
     throw new Error("Invalid price value");
   }
+
   try {
     let locale;
     switch (currency) {
@@ -15,6 +16,10 @@ const convertPrice = (price: number, currency: string): string => {
       }
       case "BRL": {
         locale = "pt-BR";
+        break;
+      }
+      case "ARS": {
+        locale = "es-AR";
         break;
       }
     }
