@@ -69,6 +69,11 @@ type Installments = {
   currency_id: string;
 };
 
+export type ISorts = {
+  id: string;
+  name: string;
+};
+
 export type Product = {
   id: string;
   title: string;

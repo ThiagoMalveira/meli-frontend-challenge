@@ -9,13 +9,16 @@ export function searchProducts(
 ): ThunkAction<void, RootState, undefined, UnknownAction> {
   return async (dispatch) => {
     try {
-      const result = await SearchService.search(payload);
+      const { searchResults } = await SearchService.search(payload);
 
-      if (!result) {
+      if (!searchResults) {
         throw new Error(`Failed to get results on action`);
       }
+      if (searchResults) {
+        dispatch(search(searchResults));
 
-      dispatch(search(result));
+        return;
+      }
     } catch (err) {
       throw new Error(`Failed to run action ${err}`);
     }

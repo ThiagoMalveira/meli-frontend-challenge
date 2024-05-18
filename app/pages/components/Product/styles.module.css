@@ -1,0 +1,4 @@
+.wrapperProduct {
+  display: flex;
+  flex-direction: row;
+}
