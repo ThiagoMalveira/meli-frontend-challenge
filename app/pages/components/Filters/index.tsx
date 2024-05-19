@@ -1,5 +1,5 @@
-import { IFilters, ISorts } from "@/service/search/types";
-import { ISearchParams } from "@/store/search/types";
+import { IFilters, ISorts } from "@/service/product/types";
+import { IProductParams } from "@/store/product/types";
 import OrderFilter from "./OrderFilter";
 import PriceFilter from "./PriceFilter";
 import styles from "./styles.module.css";
@@ -7,7 +7,7 @@ import styles from "./styles.module.css";
 type IFiltersComponent = {
   updatePrice: (newPrice: string) => void;
   updateSort: (newSort: string) => void;
-  params: ISearchParams;
+  params: IProductParams;
   sort: ISorts[];
   filters: IFilters[];
   updateMin: (newMin: string) => void;

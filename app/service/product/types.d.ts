@@ -1,3 +1,5 @@
+import { IProductParams } from "@/store/product/types";
+
 export type Paging = {
   total: number;
   primary_results: number;
@@ -119,4 +121,12 @@ export type Product = {
   discounts: null | string;
   promotions: any[];
   inventory_id: string;
+};
+
+export type IProductRepository = {
+  search: (queryParams: IProductParams) => Promise<{
+    searchResults: IProductState;
+    availableSorts: ISorts[];
+    availableFilters: IFilters[];
+  }>;
 };

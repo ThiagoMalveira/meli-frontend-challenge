@@ -1,10 +1,10 @@
-import { ISorts } from "@/service/search/types";
-import { ISearchParams } from "@/store/search/types";
+import { ISorts } from "@/service/product/types";
+import { IProductParams } from "@/store/product/types";
 import { generateKey } from "@/utils/generateKey";
 import styles from "./styles.module.css";
 
 type IOrderFilter = {
-  params: ISearchParams;
+  params: IProductParams;
   updateSort: (newSort: string) => void;
   sort: ISorts[];
 };

@@ -19,7 +19,9 @@ export default function Input({ handleChange, action }: Readonly<IInput>) {
         autoCorrect="off"
         spellCheck="false"
       />
-      <Button icon={<SearchIcon />} onClick={action} disabled={false} />
+      <Button onClick={action} disabled={false}>
+        <SearchIcon />
+      </Button>
     </div>
   );
 }

@@ -4,11 +4,11 @@ import { ButtonProps } from "./types";
 export default function Button({
   onClick,
   disabled,
-  icon,
+  children,
 }: Readonly<ButtonProps>) {
   return (
     <button onClick={onClick} disabled={disabled} className={styles.button}>
-      {icon}
+      {children}
     </button>
   );
 }

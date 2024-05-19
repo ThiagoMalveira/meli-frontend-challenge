@@ -1,11 +1,11 @@
-import { ISearchState } from "@/store/search/types";
+import { IProductState } from "@/store/product/types";
 import convertPrice from "@/utils/convertPrice";
 import Image from "next/image";
 import TruckIcon from "../TruckIcon";
 import styles from "./styles.module.css";
 
 type IProduct = {
-  item: ISearchState;
+  item: IProductState;
 };
 
 const Product = ({ item }: IProduct) => {
@@ -29,7 +29,7 @@ const Product = ({ item }: IProduct) => {
           )}
         </div>
         <span className={styles.productInfo}>{item.title}</span>
-        {item.installments.quantity && (
+        {item.installments.quantity > 1 && (
           <span className={styles.installmentsInfoText}>{`En ${
             item.installments.quantity
           } de ${convertPrice(

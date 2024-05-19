@@ -1,77 +1,27 @@
-import { useAppDispatch, useAppSelector } from "@/hooks/useAppDispatch";
-import { searchProducts } from "@/store/search/actions";
-import { ISearchParams, ISearchState } from "@/store/search/types";
+import { IProductState } from "@/store/product/types";
 import { generateKey } from "@/utils/generateKey";
 import Head from "next/head";
-import { useCallback, useState } from "react";
 import Filters from "./components/Filters";
 import Header from "./components/Header";
 import Product from "./components/Product";
 import styles from "./home.module.css";
+import useHome from "./useHome";
 
 export default function Home() {
-  const dispatch = useAppDispatch();
-  const { products, sort, filter } = useAppSelector((state) => state.search);
-  const [params, setParams] = useState<ISearchParams>({
-    searchTerm: "",
-    sort: "relevance",
-    price: "",
-  });
-  const [values, setValues] = useState({
-    min: "",
-    max: "",
-  });
-
-  const updateSearchTerm = (newSearchTerm: string) => {
-    setParams((prevParams) => ({
-      ...prevParams,
-      searchTerm: newSearchTerm,
-    }));
-  };
-
-  const updateMin = (newMin: string) => {
-    setValues((prevParams) => ({
-      ...prevParams,
-      min: newMin,
-    }));
-  };
-
-  const updateMax = (newMax: string) => {
-    setValues((prevParams) => ({
-      ...prevParams,
-      max: newMax,
-    }));
-  };
-
-  const updateSort = (newSort: string) => {
-    setParams((prevParams) => ({
-      ...prevParams,
-      sort: newSort,
-    }));
-    getProducts();
-  };
-
-  const updatePrice = (newPrice: string) => {
-    setParams((prevParams) => ({
-      ...prevParams,
-      price: newPrice,
-    }));
-    getProducts();
-  };
-
-  const filterByPrice = () => {
-    if (values.min !== "" || values.max !== "") {
-      setParams((prevParams) => ({
-        ...prevParams,
-        price: `${values.min}-${values.max}`,
-      }));
-    }
-    getProducts();
-  };
-
-  const getProducts = useCallback(() => {
-    dispatch(searchProducts(params));
-  }, [dispatch, params]);
+  const {
+    filter,
+    filterByPrice,
+    params,
+    products,
+    sort,
+    updateMax,
+    updateMin,
+    updatePrice,
+    updateSearchTerm,
+    updateSort,
+    values,
+    getProducts,
+  } = useHome();
 
   return (
     <>
@@ -107,7 +57,7 @@ export default function Home() {
           )}
           {products.length && (
             <div className={styles.WrapperProducts}>
-              {products.map((product: ISearchState) => (
+              {products.map((product: IProductState) => (
                 <Product key={generateKey()} item={product} />
               ))}
             </div>

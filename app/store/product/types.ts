@@ -1,4 +1,6 @@
-export type ISearchState = {
+import { IFilters, ISorts } from "@/service/product/types";
+
+export type IProductState = {
   id: string;
   title: string;
   price: IPrice;
@@ -10,7 +12,9 @@ export type ISearchState = {
 };
 
 export type IProduct = {
-  products: ISearchState | [];
+  products: IProductState | [];
+  filters: IFilters[] | [];
+  sorts: ISorts[] | [];
 };
 
 type IPrice = {
@@ -29,7 +33,7 @@ type IAddress = {
   city_name: string;
 };
 
-export type ISearchParams = {
+export type IProductParams = {
   searchTerm: string;
   sort: string;
   price: string;
@@ -37,4 +41,6 @@ export type ISearchParams = {
 
 export const initialState: IProduct = {
   products: [],
+  filters: [],
+  sorts: [],
 };

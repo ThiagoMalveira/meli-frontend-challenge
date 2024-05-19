@@ -1,5 +1,5 @@
 export type ButtonProps = {
   onClick: () => void;
   disabled: boolean;
-  icon: ReactNode;
+  children: ReactNode;
 };

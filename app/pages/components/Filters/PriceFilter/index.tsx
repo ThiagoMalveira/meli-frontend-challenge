@@ -1,4 +1,4 @@
-import { IFilters, values } from "@/service/search/types";
+import { IFilters, values } from "@/service/product/types";
 import { generateKey } from "@/utils/generateKey";
 import styles from "./styles.module.css";
 

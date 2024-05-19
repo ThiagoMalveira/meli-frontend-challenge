@@ -1,8 +1,8 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import searchReducer from "./search/slice";
+import productReducer from "./product/slice";
 
 const reducer = combineReducers({
-  search: searchReducer,
+  products: productReducer,
 });
 
 export const store = configureStore({
