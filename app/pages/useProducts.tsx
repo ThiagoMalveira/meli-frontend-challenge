@@ -39,36 +39,48 @@ const useProducts = () => {
     }));
   };
 
-  const updateSort = (newSort: string) => {
-    setParams((prevParams) => ({
-      ...prevParams,
-      sort: newSort,
-    }));
-    getProducts();
+  const updateSort = async (newSort: string) => {
+    setParams((prevParams) => {
+      const updatedParams = {
+        ...prevParams,
+        sort: newSort,
+      };
+      getProducts(updatedParams);
+      return updatedParams;
+    });
   };
 
   const updatePrice = (newPrice: string) => {
-    setParams((prevParams) => ({
-      ...prevParams,
-      price: newPrice,
-    }));
-    getProducts();
+    setParams((prevParams) => {
+      const updatedParams = {
+        ...prevParams,
+        price: newPrice,
+      };
+      getProducts(updatedParams);
+      return updatedParams;
+    });
   };
 
   const filterByPrice = () => {
     if (values.min !== "" || values.max !== "") {
-      setParams((prevParams) => ({
-        ...prevParams,
-        price: `${values.min}-${values.max}`,
-      }));
+      setParams((prevParams) => {
+        const updatedParams = {
+          ...prevParams,
+          price: `${values.min}-${values.max}`,
+        };
+        getProducts(updatedParams);
+        return updatedParams;
+      });
     }
-    getProducts();
   };
 
-  const getProducts = useCallback(() => {
-    dispatch(searchProducts(productService, params));
+  const getProducts = useCallback(
+    (Params: IProductParams) => {
+      dispatch(searchProducts(productService, Params));
+    },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch, params]);
+    [dispatch]
+  );
 
   return {
     params,

@@ -7,6 +7,7 @@ import styles from "./home.module.css";
 import useProducts from "./useProducts";
 const Filters = lazy(() => import("./components/Filters"));
 const Product = lazy(() => import("./components/Product"));
+
 export default function Home() {
   const {
     filter,
@@ -26,12 +27,13 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Mercado Livre - Teste Frontend</title>
+        <title>{`Mercado Livre - Pesquisou por ${params.searchTerm}`}</title>
         <meta
           name="description"
           content="Teste feito por Thiago Azevedo para o Mercado Livre"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="canonical" href="http://localhost:3000" />
         <link
           rel="icon"
           href={
@@ -42,7 +44,7 @@ export default function Home() {
       <main className={styles.main}>
         <Header
           handleChangeSearchTerm={updateSearchTerm}
-          action={getProducts}
+          action={() => getProducts(params)}
         />
         <Suspense>
           {products.length && (

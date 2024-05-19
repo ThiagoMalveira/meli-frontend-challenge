@@ -39,4 +39,3 @@ O app estará disponível no seu browser pelo endereço http://localhost:3000.
 ## 🔖 Problemas encontrados
 
 - A API não retorna valor para cidade/estado do produto ou até do vendedor;
-- Ao realizar uma requisição com sort asc (vem que da API como available sorts) ele retorna os valores de forma desc e não asc, o mesmo vale pro desc que retorna valores da forma asc
