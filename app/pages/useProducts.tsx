@@ -4,7 +4,7 @@ import { searchProducts } from "@/store/product/actions";
 import { IProductParams } from "@/types/Products";
 import { useCallback, useState } from "react";
 
-const useHome = () => {
+const useProducts = () => {
   const productService = new ProductService();
   const dispatch = useAppDispatch();
   const { products, sort, filter } = useAppSelector((state) => state.products);
@@ -86,4 +86,4 @@ const useHome = () => {
   };
 };
 
-export default useHome;
+export default useProducts;

@@ -4,7 +4,7 @@ import Head from "next/head";
 import { Suspense, lazy } from "react";
 import Header from "./components/Header";
 import styles from "./home.module.css";
-import useHome from "./useHome";
+import useProducts from "./useProducts";
 const Filters = lazy(() => import("./components/Filters"));
 const Product = lazy(() => import("./components/Product"));
 export default function Home() {
@@ -21,7 +21,7 @@ export default function Home() {
     updateSort,
     values,
     getProducts,
-  } = useHome();
+  } = useProducts();
 
   return (
     <>
