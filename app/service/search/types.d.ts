@@ -74,6 +74,19 @@ export type ISorts = {
   name: string;
 };
 
+type values = {
+  id: string;
+  name: string;
+  results: number;
+};
+
+export type IFilters = {
+  id: string;
+  name: string;
+  type: string;
+  values: values[];
+};
+
 export type Product = {
   id: string;
   title: string;
