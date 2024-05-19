@@ -7,7 +7,12 @@ export default function Button({
   children,
 }: Readonly<ButtonProps>) {
   return (
-    <button onClick={onClick} disabled={disabled} className={styles.button}>
+    <button
+      id="search"
+      onClick={onClick}
+      disabled={disabled}
+      className={styles.search}
+    >
       {children}
     </button>
   );

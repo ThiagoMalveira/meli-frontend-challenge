@@ -1,38 +1,42 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## 🧪 Tecnologias
 
-## Getting Started
+Esse projeto foi desenvolvido com as seguintes tecnologias:
 
-First, run the development server:
+- [Nextjs](https://nextjs.org)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Jest](https://jestjs.io/pt-BR/)
+- [Redux Toolkit](https://redux-toolkit.js.org)
+- [React Redux](https://react-redux.js.org)
+
+## 🚀 Como executar
+
+Clone o projeto e acesse a pasta do mesmo.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+$ git clone https://github.com/ThiagoMalveira/meli-frontend-challenge.git
+$ cd meli-frontend-challenge/app
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Para iniciá-lo, siga os passos abaixo:
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+```bash
+# Instalar as dependências
+$ yarn ou npm install
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+# Iniciar o projeto
+$ yarn dev ou npm run dev
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+O projeto está coberto por testes unitários:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```bash
+# Para rodar os testes
+$ npm run test
+```
 
-## Learn More
+O app estará disponível no seu browser pelo endereço http://localhost:3000.
 
-To learn more about Next.js, take a look at the following resources:
+## 🔖 Problemas encontrados
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- A API não retorna valor para cidade/estado do produto ou até do vendedor;
+- Ao realizar uma requisição com sort asc (vem que da API como available sorts) ele retorna os valores de forma desc e não asc, o mesmo vale pro desc que retorna valores da forma asc
