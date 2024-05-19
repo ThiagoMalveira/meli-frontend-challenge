@@ -125,7 +125,7 @@ export type Product = {
 
 export type IProductRepository = {
   search: (queryParams: IProductParams) => Promise<{
-    searchResults: IProductState;
+    searchResults: ISearchState;
     availableSorts: ISorts[];
     availableFilters: IFilters[];
   }>;

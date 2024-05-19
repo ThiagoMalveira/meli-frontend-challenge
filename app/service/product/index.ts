@@ -59,7 +59,7 @@ export class ProductService implements IProductRepository {
           };
         })
         .concat(response.sort)
-        .reverse();
+        .reverse(); // Esse reverse é para fazer o sort que está selecionado sempre ficar em primeiro na lista
 
       // API retorna os preços para serem filtrados, porém ele altera os filtros de preço a cada requisição e as vezes pode trazer produtos que não fazem sentido.
       const availableFilters: IFilters[] = response.available_filters.filter(

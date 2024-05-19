@@ -1,8 +1,10 @@
 import { IFilters, ISorts } from "@/service/product/types";
 import { IProductParams } from "@/store/product/types";
-import OrderFilter from "./OrderFilter";
-import PriceFilter from "./PriceFilter";
+import { Suspense, lazy } from "react";
 import styles from "./styles.module.css";
+
+const OrderFilter = lazy(() => import("./OrderFilter"));
+const PriceFilter = lazy(() => import("./PriceFilter"));
 
 type IFiltersComponent = {
   updatePrice: (newPrice: string) => void;
@@ -32,15 +34,17 @@ const Filters = ({
 }: IFiltersComponent) => {
   return (
     <div className={styles.mainFilters}>
-      <OrderFilter sort={sort} updateSort={updateSort} params={params} />
-      <PriceFilter
-        filters={filters}
-        values={values}
-        actionFilter={actionFilter}
-        updateMax={updateMax}
-        updateMin={updateMin}
-        updatePrice={updatePrice}
-      />
+      <Suspense>
+        <OrderFilter sort={sort} updateSort={updateSort} params={params} />
+        <PriceFilter
+          filters={filters}
+          values={values}
+          actionFilter={actionFilter}
+          updateMax={updateMax}
+          updateMin={updateMin}
+          updatePrice={updatePrice}
+        />
+      </Suspense>
     </div>
   );
 };
