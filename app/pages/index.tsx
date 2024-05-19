@@ -1,4 +1,4 @@
-import { IProductState } from "@/store/product/types";
+import { IProductState } from "@/types/Products";
 import { generateKey } from "@/utils/generateKey";
 import Head from "next/head";
 import { Suspense, lazy } from "react";

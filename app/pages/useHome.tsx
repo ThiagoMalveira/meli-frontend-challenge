@@ -1,7 +1,7 @@
 import { useAppDispatch, useAppSelector } from "@/hooks/useAppDispatch";
 import { ProductService } from "@/service/product";
 import { searchProducts } from "@/store/product/actions";
-import { IProductParams } from "@/store/product/types";
+import { IProductParams } from "@/types/Products";
 import { useCallback, useState } from "react";
 
 const useHome = () => {

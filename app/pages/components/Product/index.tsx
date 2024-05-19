@@ -1,4 +1,4 @@
-import { IProductState } from "@/store/product/types";
+import { IProductState } from "@/types/Products";
 import convertPrice from "@/utils/convertPrice";
 import Image from "next/image";
 import TruckIcon from "../TruckIcon";

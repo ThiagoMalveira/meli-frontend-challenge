@@ -1,18 +1,7 @@
-import { IFilters, values } from "@/service/product/types";
+import { Filters } from "@/types/Filters";
 import { generateKey } from "@/utils/generateKey";
 import styles from "./styles.module.css";
-
-type IPriceFilter = {
-  filters: IFilters[];
-  values: {
-    min: string;
-    max: string;
-  };
-  updateMin: (newMin: string) => void;
-  updateMax: (newMax: string) => void;
-  updatePrice: (newPrice: string) => void;
-  actionFilter: () => void;
-};
+import { IPriceFilter } from "./types";
 
 const PriceFilter = ({
   filters,
@@ -27,7 +16,7 @@ const PriceFilter = ({
       {filters[0] && (
         <div className={styles.priceWrapper}>
           <h3 className={styles.filterTitle}>{filters[0].name}</h3>
-          {filters[0].values.map((priceFilter: values) => {
+          {filters[0].values.map((priceFilter: Filters) => {
             return (
               <div
                 key={generateKey()}

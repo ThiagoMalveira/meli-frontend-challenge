@@ -1,10 +1,16 @@
 import { DEFAULT_URL } from "@/config";
-import { IProductParams, IProductState } from "@/store/product/types";
+import { IFilters } from "@/types/Filters";
+import {
+  IProductParams,
+  IProductRepository,
+  IProductState,
+  ProductOnApi,
+} from "@/types/Products";
+import { ISorts } from "@/types/Sorts";
 import convertPrice from "@/utils/convertPrice";
 import extractDecimals from "@/utils/extractDecimals";
 import { translateUrlParam } from "@/utils/translateUrlParams";
 import { URL } from "../pathUrl";
-import { IFilters, IProductRepository, ISorts, Product } from "./types";
 
 export class ProductService implements IProductRepository {
   async search(queryParams: IProductParams) {
@@ -26,7 +32,7 @@ export class ProductService implements IProductRepository {
       const response = await request.json();
 
       const searchResults: IProductState = response.results.map(
-        (item: Product) => {
+        (item: ProductOnApi) => {
           return {
             id: item.id,
             title: item.title,

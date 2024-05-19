@@ -1,13 +1,7 @@
-import { ISorts } from "@/service/product/types";
-import { IProductParams } from "@/store/product/types";
+import { ISorts } from "@/types/Sorts";
 import { generateKey } from "@/utils/generateKey";
 import styles from "./styles.module.css";
-
-type IOrderFilter = {
-  params: IProductParams;
-  updateSort: (newSort: string) => void;
-  sort: ISorts[];
-};
+import { IOrderFilter } from "./types";
 
 const OrderFilter = ({ sort, params, updateSort }: IOrderFilter) => {
   return (
