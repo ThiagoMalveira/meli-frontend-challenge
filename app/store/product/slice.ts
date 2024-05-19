@@ -1,12 +1,12 @@
-import { IFilters, ISorts } from "@/service/search/types";
+import { IFilters, ISorts } from "@/service/product/types";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { ISearchState, initialState } from "./types";
+import { IProductState, initialState } from "./types";
 
-const searchSlice = createSlice({
-  name: "search",
+const productSlice = createSlice({
+  name: "product",
   initialState,
   reducers: {
-    search(state, action: PayloadAction<ISearchState>) {
+    product(state, action: PayloadAction<IProductState>) {
       return {
         ...state,
         products: action.payload,
@@ -27,6 +27,6 @@ const searchSlice = createSlice({
   },
 });
 
-export const { search, sort, filter } = searchSlice.actions;
+export const { product, sort, filter } = productSlice.actions;
 
-export default searchSlice.reducer;
+export default productSlice.reducer;

@@ -1,13 +1,13 @@
 import { DEFAULT_URL } from "@/config";
-import { ISearchParams, ISearchState } from "@/store/search/types";
+import { IProductParams, IProductState } from "@/store/product/types";
 import convertPrice from "@/utils/convertPrice";
 import extractDecimals from "@/utils/extractDecimals";
 import { translateUrlParam } from "@/utils/translateUrlParams";
 import { URL } from "../pathUrl";
-import { IFilters, ISorts, Product } from "./types";
+import { IFilters, IProductRepository, ISorts, Product } from "./types";
 
-export const SearchService = {
-  search: async (queryParams: ISearchParams) => {
+export class ProductService implements IProductRepository {
+  async search(queryParams: IProductParams) {
     try {
       const { searchTerm, sort, price } = queryParams;
       const url = translateUrlParam(URL.search, {
@@ -25,7 +25,7 @@ export const SearchService = {
 
       const response = await request.json();
 
-      const searchResults: ISearchState = response.results.map(
+      const searchResults: IProductState = response.results.map(
         (item: Product) => {
           return {
             id: item.id,
@@ -61,7 +61,7 @@ export const SearchService = {
         .concat(response.sort)
         .reverse();
 
-      // API retorna os preços, porém ele altera os preços por cada requisição e as vezes pode trazer produtos que não fazem sentido.
+      // API retorna os preços para serem filtrados, porém ele altera os filtros de preço a cada requisição e as vezes pode trazer produtos que não fazem sentido.
       const availableFilters: IFilters[] = response.available_filters.filter(
         (filter: IFilters) => filter.id === "price"
       );
@@ -70,5 +70,5 @@ export const SearchService = {
     } catch (err) {
       throw new Error(`Failed to fetch on search ${err}`);
     }
-  },
-};
+  }
+}
