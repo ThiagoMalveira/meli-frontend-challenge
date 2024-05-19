@@ -91,7 +91,7 @@ export default function Home() {
           handleChangeSearchTerm={updateSearchTerm}
           action={getProducts}
         />
-        <div>
+        <div className={styles.wrapperFiltersAndProducts}>
           {products.length && (
             <Filters
               updatePrice={updatePrice}
@@ -105,14 +105,14 @@ export default function Home() {
               actionFilter={filterByPrice}
             />
           )}
+          {products.length && (
+            <div className={styles.WrapperProducts}>
+              {products.map((product: ISearchState) => (
+                <Product key={generateKey()} item={product} />
+              ))}
+            </div>
+          )}
         </div>
-        {products.length && (
-          <div className={styles.WrapperProducts}>
-            {products.map((product: ISearchState) => (
-              <Product key={generateKey()} item={product} />
-            ))}
-          </div>
-        )}
       </main>
     </>
   );

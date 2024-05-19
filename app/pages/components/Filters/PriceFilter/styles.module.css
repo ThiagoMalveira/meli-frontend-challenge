@@ -1,0 +1,72 @@
+.priceWrapper {
+  padding: 16px;
+  width: 250px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.filterTitle {
+  color: var(--text);
+}
+
+.priceRange {
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: var(--text);
+  transition: color 0.3s;
+  cursor: pointer;
+}
+
+.wrapperFormPrice {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.inputPrice {
+  padding: 8px;
+  width: 210px;
+  border-radius: 8px;
+  background-color: var(--white);
+  color: var(--text);
+  border: none;
+}
+
+.inputPrice:focus {
+  outline-color: #000;
+  outline-width: 1.5px;
+  outline-style: solid;
+}
+
+.filterButton {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  width: 210px;
+  height: 36px;
+  border: none;
+  background-color: var(--yellow);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.filterButton:disabled {
+  background-color: #e0e0e0;
+}
+
+@media (max-width: 540px) {
+  .priceWrapper {
+    width: 325px;
+  }
+  .inputPrice {
+    width: 250px;
+  }
+  .filterButton {
+    width: 250px;
+  }
+}

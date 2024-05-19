@@ -50,7 +50,7 @@ export const SearchService = {
           };
         }
       );
-
+      // API retornou legal, mas o sort de menor preço trás o maior preço e o de maior trás o menor...
       const availableSorts: ISorts[] = response.available_sorts
         .map((sorts: ISorts) => {
           return {
@@ -61,6 +61,7 @@ export const SearchService = {
         .concat(response.sort)
         .reverse();
 
+      // API retorna os preços, porém ele altera os preços por cada requisição e as vezes pode trazer produtos que não fazem sentido.
       const availableFilters: IFilters[] = response.available_filters.filter(
         (filter: IFilters) => filter.id === "price"
       );
