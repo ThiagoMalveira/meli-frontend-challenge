@@ -1,6 +1,8 @@
-import { IFilters, ISorts } from "@/service/product/types";
+import { IFilters } from "@/types/Filters";
+import { IProductState } from "@/types/Products";
+import { ISorts } from "@/types/Sorts";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { IProductState, initialState } from "./types";
+import { initialState } from "./types";
 
 const productSlice = createSlice({
   name: "product",

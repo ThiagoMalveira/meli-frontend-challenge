@@ -1,8 +1,8 @@
 import { ProductService } from "@/service/product";
+import { IProductParams } from "@/types/Products";
 import { ThunkAction, UnknownAction } from "@reduxjs/toolkit";
 import { RootState } from "../type";
 import { filter, product, sort } from "./slice";
-import { IProductParams } from "./types";
 
 export function searchProducts(
   productService: ProductService,

@@ -1,25 +1,9 @@
-import { IFilters, ISorts } from "@/service/product/types";
-import { IProductParams } from "@/store/product/types";
 import { Suspense, lazy } from "react";
 import styles from "./styles.module.css";
+import { IFiltersComponent } from "./types";
 
 const OrderFilter = lazy(() => import("./OrderFilter"));
 const PriceFilter = lazy(() => import("./PriceFilter"));
-
-type IFiltersComponent = {
-  updatePrice: (newPrice: string) => void;
-  updateSort: (newSort: string) => void;
-  params: IProductParams;
-  sort: ISorts[];
-  filters: IFilters[];
-  updateMin: (newMin: string) => void;
-  updateMax: (newMax: string) => void;
-  values: {
-    min: string;
-    max: string;
-  };
-  actionFilter: () => void;
-};
 
 const Filters = ({
   updatePrice,
