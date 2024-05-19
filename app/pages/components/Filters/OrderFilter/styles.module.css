@@ -1,0 +1,28 @@
+.labelSort {
+  color: var(--text);
+}
+
+.selectSort {
+  padding: 8px;
+  border-radius: 8px;
+  background-color: var(--white);
+  border: none;
+  color: var(--text);
+}
+
+.wrapperOrderFilter {
+  display: flex;
+  flex-direction: row;
+  padding: 16px;
+  width: 250px;
+  align-items: center;
+}
+@media (max-width: 540px) {
+  .wrapperOrderFilter {
+    width: 325px;
+    gap: 8px;
+  }
+  .selectSort {
+    width: 160px;
+  }
+}

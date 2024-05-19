@@ -10,9 +10,28 @@
   flex-direction: column;
   flex-wrap: wrap;
   gap: 16px;
-  max-width: 1024px;
-  width: 80vw;
+  margin-right: 32px;
   margin-top: 32px;
   padding: 16px;
   background-color: var(--white);
+}
+
+.wrapperFiltersAndProducts {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+@media (max-width: 900px) {
+  .wrapperFiltersAndProducts {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 540px) {
+  .WrapperProducts {
+    margin-top: 16px;
+    margin-left: 16px;
+    margin-right: 16px;
+  }
 }

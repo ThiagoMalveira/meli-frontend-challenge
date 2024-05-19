@@ -1,76 +1,21 @@
 .mainFilters {
   display: flex;
-  flex-direction: row;
-  margin-top: 16px;
-  gap: 16px;
+  flex-direction: column;
+  margin-top: 32px;
+  align-items: flex-start;
 }
 
-.labelSort {
-  color: var(--text);
+@media (max-width: 900px) {
+  .mainFilters {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }
 
-.priceWrapper {
-  padding: 20px;
-  border-radius: 8px;
-}
-
-.filterTitle {
-  color: var(--text);
-}
-
-.filterContainer input {
-  width: 60px;
-  padding: 5px;
-  margin: 5px;
-}
-
-.priceRange {
-  margin-bottom: 10px;
-  font-size: 14px;
-  color: var(--text);
-  transition: color 0.3s;
-  cursor: pointer;
-}
-
-.filterButton {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  width: 24px;
-  height: 24px;
-  border: none;
-  background-color: var(--yellow);
-}
-
-.filterButton:disabled {
-  background-color: #e0e0e0;
-}
-
-.inputPrice {
-  padding: 8px;
-  border-radius: 8px;
-  background-color: var(--white);
-  border: none;
-}
-
-.inputPrice:focus {
-  outline-color: #000;
-  outline-width: 1.5px;
-  outline-style: solid;
-}
-
-.wrapperFormPrice {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-}
-
-.selectSort {
-  padding: 8px;
-  border-radius: 8px;
-  background-color: var(--white);
-  border: none;
-  color: var(--text);
+@media (max-width: 540px) {
+  .mainFilters {
+    flex-direction: column;
+    margin-top: 16px;
+    align-items: center;
+  }
 }
