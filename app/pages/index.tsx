@@ -1,26 +1,78 @@
 import { useAppDispatch, useAppSelector } from "@/hooks/useAppDispatch";
 import { searchProducts } from "@/store/search/actions";
-import { ISearchState } from "@/store/search/types";
+import { ISearchParams, ISearchState } from "@/store/search/types";
 import { generateKey } from "@/utils/generateKey";
 import Head from "next/head";
-import { useCallback, useEffect } from "react";
+import { useCallback, useState } from "react";
+import Filters from "./components/Filters";
 import Header from "./components/Header";
 import Product from "./components/Product";
 import styles from "./home.module.css";
+
 export default function Home() {
   const dispatch = useAppDispatch();
-  const { products } = useAppSelector((state) => state.search);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const params = { searchTerm: "Apple iPod 5", sort: "", price: "" };
+  const { products, sort, filter } = useAppSelector((state) => state.search);
+  const [params, setParams] = useState<ISearchParams>({
+    searchTerm: "",
+    sort: "relevance",
+    price: "",
+  });
+  const [values, setValues] = useState({
+    min: "",
+    max: "",
+  });
+
+  const updateSearchTerm = (newSearchTerm: string) => {
+    setParams((prevParams) => ({
+      ...prevParams,
+      searchTerm: newSearchTerm,
+    }));
+  };
+
+  const updateMin = (newMin: string) => {
+    setValues((prevParams) => ({
+      ...prevParams,
+      min: newMin,
+    }));
+  };
+
+  const updateMax = (newMax: string) => {
+    setValues((prevParams) => ({
+      ...prevParams,
+      max: newMax,
+    }));
+  };
+
+  const updateSort = (newSort: string) => {
+    setParams((prevParams) => ({
+      ...prevParams,
+      sort: newSort,
+    }));
+    getProducts();
+  };
+
+  const updatePrice = (newPrice: string) => {
+    setParams((prevParams) => ({
+      ...prevParams,
+      price: newPrice,
+    }));
+    getProducts();
+  };
+
+  const filterByPrice = () => {
+    if (values.min !== "" || values.max !== "") {
+      setParams((prevParams) => ({
+        ...prevParams,
+        price: `${values.min}-${values.max}`,
+      }));
+    }
+    getProducts();
+  };
 
   const getProducts = useCallback(() => {
     dispatch(searchProducts(params));
   }, [dispatch, params]);
 
-  useEffect(() => {
-    getProducts();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch]);
   return (
     <>
       <Head>
@@ -35,7 +87,25 @@ export default function Home() {
         />
       </Head>
       <main className={styles.main}>
-        <Header />
+        <Header
+          handleChangeSearchTerm={updateSearchTerm}
+          action={getProducts}
+        />
+        <div>
+          {products.length && (
+            <Filters
+              updatePrice={updatePrice}
+              updateSort={updateSort}
+              sort={sort}
+              filters={filter}
+              params={params}
+              updateMin={updateMin}
+              updateMax={updateMax}
+              values={values}
+              actionFilter={filterByPrice}
+            />
+          )}
+        </div>
         {products.length && (
           <div className={styles.WrapperProducts}>
             {products.map((product: ISearchState) => (

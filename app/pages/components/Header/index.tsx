@@ -2,7 +2,15 @@ import Image from "next/image";
 import Input from "../Input";
 import styles from "./styles.module.css";
 
-export default function Header() {
+type IHeader = {
+  handleChangeSearchTerm: (newSearchTerm: string) => void;
+  action: () => void;
+};
+
+export default function Header({
+  handleChangeSearchTerm,
+  action,
+}: Readonly<IHeader>) {
   return (
     <header className={styles.header}>
       <div className={styles.headerWrapper}>
@@ -14,7 +22,7 @@ export default function Header() {
             height={40}
           />
         </div>
-        <Input />
+        <Input handleChange={handleChangeSearchTerm} action={action} />
       </div>
     </header>
   );

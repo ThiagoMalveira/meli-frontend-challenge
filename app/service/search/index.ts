@@ -4,7 +4,7 @@ import convertPrice from "@/utils/convertPrice";
 import extractDecimals from "@/utils/extractDecimals";
 import { translateUrlParam } from "@/utils/translateUrlParams";
 import { URL } from "../pathUrl";
-import { ISorts, Product } from "./types";
+import { IFilters, ISorts, Product } from "./types";
 
 export const SearchService = {
   search: async (queryParams: ISearchParams) => {
@@ -51,16 +51,21 @@ export const SearchService = {
         }
       );
 
-      const availableSorts: ISorts[] = response.available_sorts.map(
-        (sorts: ISorts) => {
+      const availableSorts: ISorts[] = response.available_sorts
+        .map((sorts: ISorts) => {
           return {
             id: sorts.id,
             name: sorts.name,
           };
-        }
+        })
+        .concat(response.sort)
+        .reverse();
+
+      const availableFilters: IFilters[] = response.available_filters.filter(
+        (filter: IFilters) => filter.id === "price"
       );
 
-      return { searchResults, availableSorts };
+      return { searchResults, availableSorts, availableFilters };
     } catch (err) {
       throw new Error(`Failed to fetch on search ${err}`);
     }
